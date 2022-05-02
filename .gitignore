@@ -1,0 +1,8 @@
+#Mac D_Store filesgi
+.DS_Store
+
+#compiled files 
+.class
+
+#build output directories
+/bin
