@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class GameFrame extends JFrame {
-	private Game game = new Game();
+	private MarioGame game = new MarioGame();
 	
 
 	// starting dimensions of window (pixels)
