@@ -12,10 +12,12 @@ import javax.swing.JPanel;
 
 public class MarioGame {
 
+    private Mario mario;
     private int score;
     private Image marioFace;
     public MarioGame() {
         score = 0;
+
         // try {
         //     marioFace = ImageIO.read(new File("../images/LeftMario.png"));
         // }
@@ -25,21 +27,14 @@ public class MarioGame {
     }
 
     public void drawTheGame(Graphics g) {
-        try {
-            marioFace = ImageIO.read(new File("../images/LeftMario.png"));
-            g.drawImage(marioFace, 200, 200, null);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+       mario.draw(g);
     }
 
     public void updateGame() {
-
     }
 
 
-    // private JFrame frame = new JFrame("Mario");
+    // private JFrame frame = new JFrame("Mario");s
     // private JPanel panel;
     // private final Dimension DIM = new Dimension(800,700);
     // //private BejeweledGrid grid = new BejeweledGrid();
