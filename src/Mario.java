@@ -10,7 +10,7 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Mario {
+public class Mario extends GameObject{
     private int x; //x coord
     private int y; // y coord
     private boolean right;
@@ -26,9 +26,10 @@ public class Mario {
         
     }
 
-    public void drawMario(Graphics g) {
+    public void draw(Graphics g) {
         try {
             mario = ImageIO.read(new File ("../images/LeftMario.png"));
+            g.drawImage(mario, 200, 200, null);
         }
         catch(IOException e) {
             e.printStackTrace();
