@@ -17,6 +17,7 @@ public class MarioGame {
     private Image marioFace;
     public MarioGame() {
         score = 0;
+        mario = new Mario();
 
         // try {
         //     marioFace = ImageIO.read(new File("../images/LeftMario.png"));
