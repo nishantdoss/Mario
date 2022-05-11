@@ -3,8 +3,9 @@ public HitBox{
     private int x;
     private int y;
 
-    public class HitBox(){
-        hitBox = new Rectangle(x,y, /*image width, image length*/)
+    public class HitBox(File f){
+        BufferedImage box = ImageIO.read(new File(f));
+        this.hitBox = new Rectangle(x,y, box.getWidth(), box.getHeight());
     }
 
 }
