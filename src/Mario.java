@@ -23,20 +23,17 @@ public class Mario extends GameObject{
         this.right = right;
 
     }
-<<<<<<< HEAD
     public Mario() {
 
     }
-    public static void Move() {
+    public static void move() {
         
     }
-=======
->>>>>>> 9fb5af92651288db195097723c2d597f3fc38947
 
     public void draw(Graphics g) {
         try {
-            mario = ImageIO.read(new File ("RightMario.png"));
-            g.drawImage(mario, 200, 200, null);
+            mario = ImageIO.read(new File ("images/RightMario.png"));
+            g.drawImage(mario, 0, 300, null);
         }
         catch(IOException e) {
             e.printStackTrace();
