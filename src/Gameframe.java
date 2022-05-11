@@ -5,8 +5,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-
 import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.awt.*;
+
+import java.awt.event.*;
+import java.awt.event.MouseEvent;
+import java.io.File;
+
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class GameFrame extends JFrame {
 	private MarioGame game = new MarioGame();
@@ -14,6 +25,7 @@ public class GameFrame extends JFrame {
 
 	// starting dimensions of window (pixels)
 	public static final int WIDTH = 500, HEIGHT = 500, REFRESH = 200;
+	private Image marioFace;
 	
 	// where the game objects are displayed
 	private JPanel panel = new JPanel() {
@@ -45,6 +57,7 @@ public class GameFrame extends JFrame {
 		panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		this.add(panel);
 		this.pack();
+	
 		timer = new Timer(REFRESH, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -52,10 +65,16 @@ public class GameFrame extends JFrame {
 				panel.repaint();
 			}
 		});
+
+		
+
 		timer.start();
+		panel.setBackground(Color.GREEN);
+
 		this.setVisible(true);
 		panel.requestFocusInWindow();
 		addKeys(panel);
+
 	}
 
 	/**
@@ -85,7 +104,7 @@ public class GameFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("hit up arrow");
-				game.upHit(e);
+				// game.upHit(e);
 			}
 		});
 		panel.getActionMap().put("rt_key",new AbstractAction() {
@@ -93,7 +112,7 @@ public class GameFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("hit the right arrow");
-				game.rtHit(e);
+				// game.rtHit(e);
 			}
 		});
 		panel.getActionMap().put("lt_key",new AbstractAction() {
@@ -101,7 +120,7 @@ public class GameFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("hit the left arrow");
-				game.ltHit(e);
+				// game.ltHit(e);
 			}
 		});
 
@@ -110,7 +129,7 @@ public class GameFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("hit the down arrow");
-				game.downHit(e);
+				// game.downHit(e);
 			}
 		});
 	}
