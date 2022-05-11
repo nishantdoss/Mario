@@ -14,6 +14,9 @@ public class MarioGame {
     private JFrame frame = new JFrame("Mario");
     private JPanel panel;
     private final Dimension DIM = new Dimension(800,700);
+    public static final int up = 0;
+    public static final int right = 1;
+    public static final int left = 2;
     //private BejeweledGrid grid = new BejeweledGrid();
     private Image background;
     private Timer timer = new Timer(50,null);
@@ -32,5 +35,20 @@ public class MarioGame {
     }
     private void start() {
 
-}
+    }  
+    
+    public void ltHit(ActionEvent e) {
+		System.out.println("Left!!");
+        Mario.move(left);
+	}
+
+    public void rtHit(ActionEvent e) {
+        System.out.println("Right!");
+        Mario.move(right);
+	}
+
+    public  void upHit(ActionEvent e) {
+		System.out.println("Up!!");
+        Mario.move(up);
+	}
 }
