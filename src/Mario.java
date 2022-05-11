@@ -24,11 +24,22 @@ public class Mario extends GameObject{
         this.right = right;
 
     }
+    public Mario() {
+
+    }
+    public static void move() {
+        
+    }
 
     public void draw(Graphics g) {
         try {
+<<<<<<< HEAD
             mario = ImageIO.read(new File("RightMario.png"));
             g.drawImage(mario, 200, 200, null);
+=======
+            mario = ImageIO.read(new File ("images/RightMario.png"));
+            g.drawImage(mario, 0, 300, null);
+>>>>>>> 8506324df768e63519c02c1cf103d35c092f0223
         }
         catch(IOException e) {
             e.printStackTrace();
