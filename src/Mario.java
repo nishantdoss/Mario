@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 public class Mario extends GameObject{
     private int x; //x coord
     private int y; // y coord
+    private int direction;
     private boolean right;
     private Image mario;
     //also add dimensions of mario as a final variable
@@ -22,12 +23,15 @@ public class Mario extends GameObject{
         this.right = right;
 
     }
+<<<<<<< HEAD
     public Mario() {
 
     }
     public static void Move() {
         
     }
+=======
+>>>>>>> 9fb5af92651288db195097723c2d597f3fc38947
 
     public void draw(Graphics g) {
         try {
@@ -40,5 +44,8 @@ public class Mario extends GameObject{
         //
         // g.drawImage(imagename, x coord, y coord, null )
             
+    }
+    public static void move(int newDirection) {
+        Rectangle hitBox = new 
     }
 }
