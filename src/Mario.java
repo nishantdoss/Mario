@@ -16,7 +16,7 @@ public class Mario extends GameObject{
     private int direction;
     private boolean right;
     private Image mario;
-    private final int marioWidth = ImageIO.read("images/RightMario.png").getWidth();
+    //private Image rightMario = ImageIO.read(new File ("images/RightMario.png")).getWidth();
     //also add dimensions of mario as a final variable
     public Mario(int x, int y, boolean right) {
         this.x = x;
@@ -33,13 +33,8 @@ public class Mario extends GameObject{
 
     public void draw(Graphics g) {
         try {
-<<<<<<< HEAD
-            mario = ImageIO.read(new File("RightMario.png"));
-            g.drawImage(mario, 200, 200, null);
-=======
-            mario = ImageIO.read(new File ("images/RightMario.png"));
-            g.drawImage(mario, 0, 300, null);
->>>>>>> 8506324df768e63519c02c1cf103d35c092f0223
+            mario = ImageIO.read(new File("images/RightMario.png"));
+            g.drawImage(mario, x, y, null);
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -48,16 +43,19 @@ public class Mario extends GameObject{
         // g.drawImage(imagename, x coord, y coord, null )
             
     }
-    public  void move(int newDirection) {
-        while(direction == MarioGame.right){
+    public void setDir(boolean dir) {
+        right = dir;
+    }
+    public  void move(boolean direction) {
+        if(direction = right){
             this.x += 5;
         }
-        while(direction == MarioGame.right){
+        else if(direction = false){
             this.x -= 5;
         }
-        if(direction == MarioGame.up){
-            y += 10;
-        }
+        // if(direction = MarioGame.up){
+        //     y += 10;
+        // }
     }
 
 }

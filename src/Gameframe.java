@@ -63,6 +63,8 @@ public class GameFrame extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				//game.updateGame();
 				panel.repaint();
+				
+				System.out.println("1");
 			}
 		});
 
@@ -99,20 +101,20 @@ public class GameFrame extends JFrame {
 		panel.getInputMap().put(KeyStroke.getKeyStroke("released LEFT"), "lt_key_r");
 		panel.getInputMap().put(KeyStroke.getKeyStroke("released DOWN"), "dn_key_r");
 
-		panel.getActionMap().put("up_key", new AbstractAction() {
+		// panel.getActionMap().put("up_key", new AbstractAction() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("hit up arrow");
-				// game.upHit(e);
-			}
-		});
+		// 	@Override
+		// 	public void actionPerformed(ActionEvent e) {
+		// 		System.out.println("hit up arrow");
+		// 		game.upHit(e);
+		// 	}
+		// });
 		panel.getActionMap().put("rt_key",new AbstractAction() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("hit the right arrow");
-				// game.rtHit(e);
+				game.rtHit(e);
 			}
 		});
 		panel.getActionMap().put("lt_key",new AbstractAction() {
@@ -120,18 +122,18 @@ public class GameFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("hit the left arrow");
-				// game.ltHit(e);
+				game.ltHit(e);
 			}
 		});
 
 
-		panel.getActionMap().put("dn_key", new AbstractAction() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("hit the down arrow");
-				// game.downHit(e);
-			}
-		});
+		// panel.getActionMap().put("dn_key", new AbstractAction() {
+		// 	@Override
+		// 	public void actionPerformed(ActionEvent e) {
+		// 		System.out.println("hit the down arrow");
+		// 		// game.downHit(e);
+		// 	}
+		// });
 	}
 
 }

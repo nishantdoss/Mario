@@ -17,23 +17,6 @@ public class MarioGame {
     public static final int up = 0;
     public static final int right = 1;
     public static final int left = 2;
-<<<<<<< HEAD
-    //private BejeweledGrid grid = new BejeweledGrid();
-    private Image background;
-    private Timer timer = new Timer(50,null);
-    public static void main(String[] args) {
-      // new MarioGame();
-        //GameFrame gf = new GameFrame("Mario");
-       // gf.setVisible(true);
-       try {
-        Image f = ImageIO.read(new File("C:/Images/BackgroundMario.png"));
-    } catch (IOException e) {
-        String workingDir = System.getProperty("user.dir");
-        System.out.println("Current working directory : " + workingDir);
-        e.printStackTrace();
-
-=======
->>>>>>> 8506324df768e63519c02c1cf103d35c092f0223
     private Mario mario;
     private Image image;
     private int score;
@@ -61,7 +44,7 @@ public class MarioGame {
         //     e.printStackTrace();
         // }       
             
-        mario = new Mario();
+        mario = new Mario(0, 200, true);
         back = new Background();
 
         // try {
@@ -72,29 +55,34 @@ public class MarioGame {
         // }
     }
 
-    public void drawTheGame(Graphics g) {
-       back.draw(g);
-       mario.draw(g);
-    }
-
-<<<<<<< HEAD
-    }  
-=======
-    
->>>>>>> 8506324df768e63519c02c1cf103d35c092f0223
-    
     public void ltHit(ActionEvent e) {
-		System.out.println("Left!!");
-        Mario.move(left);
-	}
-
+        mario.setDir(false);
+        mario.move(false);   
+        
+    }
     public void rtHit(ActionEvent e) {
-        System.out.println("Right!");
-        Mario.move(right);
-	}
+        mario.setDir(true);
+        mario.move(true);
+    }
+    public void drawTheGame(Graphics g) {
+        back.draw(g);
+        mario.draw(g);
+     }
 
-    public  void upHit(ActionEvent e) {
-		System.out.println("Up!!");
-        Mario.move(up);
-	}
+    // }  
+    
+    // public void ltHit(ActionEvent e) {
+	// 	System.out.println("Left!!");
+    //     Mario.move(left);
+	// }
+
+    // public void rtHit(ActionEvent e) {
+    //     System.out.println("Right!");
+    //     Mario.move(right);
+	// }
+
+    // public  void upHit(ActionEvent e) {
+	// 	System.out.println("Up!!");
+    //     Mario.move(up);
+	// }
 }
