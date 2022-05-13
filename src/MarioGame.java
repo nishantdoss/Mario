@@ -44,7 +44,7 @@ public class MarioGame {
         //     e.printStackTrace();
         // }       
             
-        mario = new Mario(0, 200, true);
+        mario = new Mario(0, 285, true);
         back = new Background();
 
         // try {
@@ -57,16 +57,22 @@ public class MarioGame {
 
     public void ltHit(ActionEvent e) {
         mario.setDir(false);
-        mario.move(false);   
+        mario.moveLeft(); 
         
     }
     public void rtHit(ActionEvent e) {
         mario.setDir(true);
-        mario.move(true);
+        mario.moveRight();
     }
     public void drawTheGame(Graphics g) {
         back.draw(g);
-        mario.draw(g);
+        if (mario.getDir() == true) {
+            mario.drawRight(g);
+        }
+        else if (mario.getDir() == false) {
+            mario.drawLeft(g);
+        }
+       
      }
 
     // }  
