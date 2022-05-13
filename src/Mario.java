@@ -44,8 +44,13 @@ public class Mario extends GameObject{
 
     public void draw(Graphics g) {
         try {
+<<<<<<< HEAD
             mario = ImageIO.read(new File("RightMario.png"));
             g.drawImage(mario, 200, 200, null);
+=======
+            mario = ImageIO.read(new File("images/RightMario.png"));
+            g.drawImage(mario, x, y, null);
+>>>>>>> 5984b63a1b60f31f590200f2cdc7d9bc27a1438b
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -54,16 +59,23 @@ public class Mario extends GameObject{
         // g.drawImage(imagename, x coord, y coord, null )
             
     }
-    public  void move(int newDirection) {
-        while(direction == MarioGame.right){
+    public void setDir(boolean dir) {
+        right = dir;
+    }
+    public  void move(boolean direction) {
+        if(direction = right){
             this.x += 5;
         }
+<<<<<<< HEAD
         while(direction == MarioGame.left){
+=======
+        else if(direction = false){
+>>>>>>> 5984b63a1b60f31f590200f2cdc7d9bc27a1438b
             this.x -= 5;
         }
-        if(direction == MarioGame.up){
-            y += 10;
-        }
+        // if(direction = MarioGame.up){
+        //     y += 10;
+        // }
     }
 
 }

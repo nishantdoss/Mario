@@ -48,7 +48,7 @@ public class MarioGame {
         //     e.printStackTrace();
         // }       
             
-        mario = new Mario();
+        mario = new Mario(0, 200, true);
         back = new Background();
 
         // try {
@@ -59,29 +59,34 @@ public class MarioGame {
         // }
     }
 
-    public void drawTheGame(Graphics g) {
-       back.draw(g);
-       mario.draw(g);
-    }
-
-<<<<<<< HEAD
-    }  
-=======
-    
->>>>>>> 8506324df768e63519c02c1cf103d35c092f0223
-    
     public void ltHit(ActionEvent e) {
-		System.out.println("Left!!");
-        Mario.move(left);
-	}
-
+        mario.setDir(false);
+        mario.move(false);   
+        
+    }
     public void rtHit(ActionEvent e) {
-        System.out.println("Right!");
-        Mario.move(right);
-	}
+        mario.setDir(true);
+        mario.move(true);
+    }
+    public void drawTheGame(Graphics g) {
+        back.draw(g);
+        mario.draw(g);
+     }
 
-    public  void upHit(ActionEvent e) {
-		System.out.println("Up!!");
-        Mario.move(up);
-	}
+    // }  
+    
+    // public void ltHit(ActionEvent e) {
+	// 	System.out.println("Left!!");
+    //     Mario.move(left);
+	// }
+
+    // public void rtHit(ActionEvent e) {
+    //     System.out.println("Right!");
+    //     Mario.move(right);
+	// }
+
+    // public  void upHit(ActionEvent e) {
+	// 	System.out.println("Up!!");
+    //     Mario.move(up);
+	// }
 }
