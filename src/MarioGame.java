@@ -17,13 +17,17 @@ public class MarioGame {
     public static final int up = 0;
     public static final int right = 1;
     public static final int left = 2;
+    //private BejeweledGrid grid = new BejeweledGrid();
+    private Image background;
+    private Timer timer = new Timer(50,null);
+      // new MarioGame();
+        //GameFrame gf = new GameFrame("Mario");
+       // gf.setVisible(true);
     private Mario mario;
     private Image image;
     private int score;
     private Image marioFace;
     //private BejeweledGrid grid = new BejeweledGrid();
-    private Image background;
-    private Timer timer = new Timer(50,null);
     private Background back;
     public MarioGame() {
         score = 0;
