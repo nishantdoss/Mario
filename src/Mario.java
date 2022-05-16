@@ -10,7 +10,7 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Mario extends GameObject{
+public class Mario extends HitBox{
     private int x; //x coord
     private int y; // y coord
     private int direction;
@@ -82,8 +82,8 @@ public class Mario extends GameObject{
         this.x += 2;
     }
     public  void moveLeft() {
-       this.x = x -2;
-=======
+       this.x = x - 2;
+====}
     public  void move(boolean direction) {
         if(direction = right){
             this.x += 5;
