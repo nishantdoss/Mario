@@ -44,13 +44,8 @@ public class Mario extends HitBox{
 
     public void drawRight(Graphics g) {
         try {
-<<<<<<< HEAD
             mario = ImageIO.read(new File("RightMario.png"));
             g.drawImage(mario, 200, 200, null);
-=======
-            mario = ImageIO.read(new File("images/RightMario.png"));
-            g.drawImage(mario, x, y, null);
->>>>>>> 5984b63a1b60f31f590200f2cdc7d9bc27a1438b
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -88,13 +83,10 @@ public class Mario extends HitBox{
         if(direction = right){
             this.x += 5;
         }
-<<<<<<< HEAD
-        while(direction == MarioGame.left){
-=======
+        while(direction = MarioGame.left){
         else if(direction = false){
->>>>>>> 5984b63a1b60f31f590200f2cdc7d9bc27a1438b
             this.x -= 5;
->>>>>>> ba3606a0e654c1b86e38faec17a24248fd142a26
+        }
         }
     public void moveUp() {
         
