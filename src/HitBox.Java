@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> c6dc6c14b9eeb4b01fa3bef46c27ec9103033f34
+=======
+>>>>>>> 212c6ec9a0e92448849337258ad5afba070282b7
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
 import java.awt.*;
@@ -47,11 +50,13 @@ public class HitBox {
         public HitBox(int x, int y, File f){
             this.x = x;
             this.y = y;
-            BufferedImage box = ImageIO.read(f);
+            try{
+                BufferedImage box = ImageIO.read(f);
             this.hitBox = new Rectangle(x,y, box.getWidth(), box.getHeight());
         }
     
     }
+<<<<<<< HEAD
 =======
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
@@ -85,3 +90,5 @@ public class HitBox {
     }
 >>>>>>> f3b2ab6eb7001df6231711e025c85b513112bfc0
 >>>>>>> c6dc6c14b9eeb4b01fa3bef46c27ec9103033f34
+=======
+>>>>>>> 212c6ec9a0e92448849337258ad5afba070282b7

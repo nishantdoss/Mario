@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.imageio.ImageIO;
 =======
 import java.io.File;
-import java.util.Timer;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -63,10 +62,10 @@ public class Wall extends HitBox {
         super(x,y,f);
     }
     public void move(){
-        timer = new Timer(100, new ActionListener() {
+        timer = new Timer(50, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-                
+                x += 5;
 			}
 		});
 		timer.start();
