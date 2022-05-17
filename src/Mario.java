@@ -10,7 +10,11 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+<<<<<<< HEAD
 public class Mario {
+=======
+public class Mario extends HitBox{
+>>>>>>> c6dc6c14b9eeb4b01fa3bef46c27ec9103033f34
     private int x; //x coord
     private int y; // y coord
     private int direction;
@@ -79,6 +83,7 @@ public class Mario {
         this.x += 8;
     }
     public  void moveLeft() {
+<<<<<<< HEAD
        this.x = x -8;
     }
     // public  void move(boolean direction) {
@@ -89,6 +94,22 @@ public class Mario {
     //         this.x -= 5;
     //     }
     // }
+=======
+       this.x = x - 2;
+====}
+    public  void move(boolean direction) {
+        if(direction = right){
+            this.x += 5;
+        }
+<<<<<<< HEAD
+        while(direction == MarioGame.left){
+=======
+        else if(direction = false){
+>>>>>>> 5984b63a1b60f31f590200f2cdc7d9bc27a1438b
+            this.x -= 5;
+>>>>>>> ba3606a0e654c1b86e38faec17a24248fd142a26
+        }
+>>>>>>> c6dc6c14b9eeb4b01fa3bef46c27ec9103033f34
     public void moveUp() {
 
     }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
 import java.awt.*;
@@ -12,10 +13,24 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.imageio.ImageIO;
+=======
+import java.io.File;
+import java.util.Timer;
+import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+
+>>>>>>> c6dc6c14b9eeb4b01fa3bef46c27ec9103033f34
 
 public class Wall extends HitBox {
     private int x;
     private int y;
+<<<<<<< HEAD
     private Image wall;
     public Wall(int x, int y, File f) {
         super(x,y,f);
@@ -40,4 +55,23 @@ public class Wall extends HitBox {
         y += z;
     }
 
+=======
+    private int z;
+
+    private Timer timer;
+    public Wall(int x, int y, File f) {
+        super(x,y,f);
+    }
+    public void move(){
+        timer = new Timer(100, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+                
+			}
+		});
+		timer.start();
+
+    }
+    
+>>>>>>> c6dc6c14b9eeb4b01fa3bef46c27ec9103033f34
 }
