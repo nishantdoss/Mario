@@ -24,7 +24,7 @@ public class GameFrame extends JFrame {
 	
 
 	// starting dimensions of window (pixels)
-	public static final int WIDTH = 500, HEIGHT = 500, REFRESH = 200;
+	public static final int WIDTH = 600, HEIGHT = 380, REFRESH = 50;
 	private Image marioFace;
 	
 	// where the game objects are displayed
@@ -64,7 +64,7 @@ public class GameFrame extends JFrame {
 				//game.updateGame();
 				panel.repaint();
 				
-				System.out.println("1");
+				//System.out.println("1");
 			}
 		});
 
