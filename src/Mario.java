@@ -24,21 +24,10 @@ public class Mario extends HitBox{
 
     
     //also add dimensions of mario as a final variable
-    public Mario(int x, int y, boolean right) {
-        this.x = x;
-        this.y = y;
+    public Mario(int x, int y, boolean right, file f) {
+        super(x,y, f);
         this.right = right;
-        try {
-            mario = ImageIO.read(new File("images/RightMario.png"));
-            MARIOWIDTH = mario.getWidth(null);
-      } catch (IOException e) {
-          e.printStackTrace();
-      }
-      try {
-        mario = ImageIO.read(new File("images/RightMario.png"));
-        MARIOHEIGHT = mario.getHeight(null);
-      } catch (IOException e) {
-        e.printStackTrace();
+        
         }
     }
 
