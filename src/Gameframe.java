@@ -19,7 +19,7 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class GameFrame extends JFrame {
+public class Gameframe extends JFrame {
 	private MarioGame game = new MarioGame();
 	
 
@@ -41,7 +41,7 @@ public class GameFrame extends JFrame {
 	private Timer timer;//timer that runs the game
 
 
-	public GameFrame(String string) {
+	public Gameframe(String string) {
 		super(string);
 		setUpStuff();
 	}
@@ -61,7 +61,6 @@ public class GameFrame extends JFrame {
 		timer = new Timer(REFRESH, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//game.updateGame();
 				panel.repaint();
 				
 				//System.out.println("1");
