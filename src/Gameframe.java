@@ -61,7 +61,6 @@ public class GameFrame extends JFrame {
 		timer = new Timer(REFRESH, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//game.updateGame();
 				panel.repaint();
 				
 				//System.out.println("1");

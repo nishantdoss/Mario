@@ -10,7 +10,8 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Mario /* extends HitBox*/{
+
+public class Mario extends HitBox{
     private int x; //x coord
     private int y; // y coord
     private int direction;
@@ -18,31 +19,15 @@ public class Mario /* extends HitBox*/{
     private Image mario;
     private int MARIOWIDTH;
     private int MARIOHEIGHT;
-
-    public Mario(int x, int y, File f) {
-        //super(x, y, f);
-    }
     
 
     
     //also add dimensions of mario as a final variable
-    public Mario(int x, int y, boolean right) {
-        this.x = x;
-        this.y = y;
+    public Mario(int x, int y, boolean right, File f) {
+        super(x,y,f);
         this.right = right;
-        try {
-            mario = ImageIO.read(new File("images/RightMario.png"));
-            MARIOWIDTH = mario.getWidth(null);
-      } catch (IOException e) {
-          e.printStackTrace();
-      }
-      try {
-        mario = ImageIO.read(new File("images/RightMario.png"));
-        MARIOHEIGHT = mario.getHeight(null);
-      } catch (IOException e) {
-        e.printStackTrace();
         }
-    }
+    
 
     public void drawRight(Graphics g) {
         try {
@@ -60,7 +45,8 @@ public class Mario /* extends HitBox*/{
     public void drawLeft(Graphics g) {
         try {
             mario = ImageIO.read(new File("images/RightMario.png"));
-            g.drawImage(mario, x, y, null);
+            Image image = mario.getScaledInstance(60, 60, Image.SCALE_DEFAULT);
+            g.drawImage(mario, x + image.getWidth(null), y, -image.getWidth(null), image.getHeight(null),null);
 
             
         }

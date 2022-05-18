@@ -17,15 +17,26 @@ public class HitBox {
     private Rectangle hitBox;
     private int x;
     private int y;
+    private Image object;
+    private int objectWidth;
+    private int objectHeight;
 
-    public HitBox(int x, int y, File f) {
-        this.x = x;
-        this.y = y;
-        try {
-            BufferedImage box = ImageIO.read(f);
-            this.hitBox = new Rectangle(x, y, box.getWidth(), box.getHeight());
-        } catch (IOException e) {
+     public HitBox(int x, int y, File f){
+            this.x = x;
+            this.y = y;
+            try {
+                this.object = ImageIO.read(f);
+                this.objectWidth = object.getWidth(null);
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
+          try {
+            this.object = ImageIO.read(f);
+            this.objectHeight = object.getHeight(null);
+          } catch (IOException e) {
             e.printStackTrace();
         }
+    
     }
+    
 }
