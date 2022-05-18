@@ -79,11 +79,13 @@ public class Mario extends HitBox{
             this.x -= 5;
         }
         }
+    }
     public void moveUp() {
 
     }
         // if(direction = MarioGame.up){
         //     y += 10;
         // }
-    }
+
+}
 

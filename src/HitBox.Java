@@ -17,8 +17,8 @@ import javax.imageio.ImageIO;
 
 public class HitBox {
         private Rectangle hitBox;
-        private int x;
-        private int y;
+        private int xCoor;
+        private int yCoor;
         private Image object;
         private int objectWidth;
         private int objectHeight;
@@ -26,19 +26,28 @@ public class HitBox {
 
     
         public HitBox(int x, int y, File f){
-            this.x = x;
-            this.y = y;
+            this.xCoor = x;
+            this.yCoor = y;
             try {
                 this.object = ImageIO.read(f);
                 this.objectWidth = object.getWidth(null);
-          } catch (IOException e) {
+            } 
+            catch (IOException e) {
               e.printStackTrace();
-          }
-          try {
-            this.object = ImageIO.read(f);
-            this.objectHeight = f.getHeight(null);
-          } catch (IOException e) {
-            e.printStackTrace();
+            } 
+            try {
+                this.object = ImageIO.read(f);
+                this.objectHeight = object.getHeight(null);
+            } 
+            catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    
+
+    public void checkCollision(){
+        
     }
+
+
+    
+}
