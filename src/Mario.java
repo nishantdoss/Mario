@@ -19,8 +19,6 @@ public class Mario extends HitBox{
     private Image mario;
     private int MARIOWIDTH;
     private int MARIOHEIGHT;
-
-
     
 
     
@@ -34,7 +32,8 @@ public class Mario extends HitBox{
     public void drawRight(Graphics g) {
         try {
            mario = ImageIO.read(new File("images/RightMario.png"));
-            g.drawImage(mario, x, y, null);
+           Image image = mario.getScaledInstance(60, 60, Image.SCALE_DEFAULT);
+            g.drawImage(image, x, y, null);
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -45,8 +44,9 @@ public class Mario extends HitBox{
     }
     public void drawLeft(Graphics g) {
         try {
-            mario = ImageIO.read(new File("images/LeftMario.png"));
-            g.drawImage(mario, x, y, null);
+            mario = ImageIO.read(new File("images/RightMario.png"));
+            Image image = mario.getScaledInstance(60, 60, Image.SCALE_DEFAULT);
+            g.drawImage(mario, x + image.getWidth(null), y, -image.getWidth(null), image.getHeight(null),null);
 
             
         }
@@ -68,18 +68,16 @@ public class Mario extends HitBox{
         this.x += 8;
     }
     public  void moveLeft() {
-       this.x = x - 2;
+       this.x = x -8;
     }
-    public  void move(boolean direction) {
-        if(direction = right){
-            this.x += 5;
-        }
-        while(direction = MarioGame.left){
-        else if(direction = false){
-            this.x -= 5;
-        }
-        }
-    }
+    // public  void move(boolean direction) {
+    //     if(direction = right){
+    //         this.x += 5;
+    //     }
+    //     while(direction == MarioGame.left){
+    //         this.x -= 5;
+    //     }
+    // }
     public void moveUp() {
 
     }

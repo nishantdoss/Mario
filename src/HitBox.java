@@ -1,4 +1,3 @@
-
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
 import java.awt.*;
@@ -7,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.event.*;
 import java.awt.event.MouseEvent;
 import java.io.File;
-
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import javax.swing.*;

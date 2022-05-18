@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+
 public class MarioGame {
     private JFrame frame = new JFrame("Mario");
     private JPanel panel;
@@ -49,9 +50,11 @@ public class MarioGame {
         //     e.printStackTrace();
         // }       
             
-        mario = new Mario(0, 285, true); // y = 285, 140
+        mario = new Mario(0, 285, true, new File("images/RightMario.png")); // y = 285, 140
         back = new Background();
-        wall = new Wall(810, 285, new File("images/MarioWall.jpeg"));
+        wall = new Wall(550, 290, new File("images/MarioWall.png"));
+       
+
 
         // try {
         //     marioFace = ImageIO.read(new File("../images/LeftMario.png"));
