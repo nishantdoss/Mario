@@ -27,6 +27,7 @@ public class MarioGame {
     private Image image;
     private int score;
     private Image marioFace;
+    private Wall wall;
     //private BejeweledGrid grid = new BejeweledGrid();
     private Background back;
     public MarioGame() {
@@ -48,8 +49,9 @@ public class MarioGame {
         //     e.printStackTrace();
         // }       
             
-        mario = new Mario(0, 285, true);
+        mario = new Mario(0, 285, true); // y = 285, 140
         back = new Background();
+        wall = new Wall(810, 285, new File("images/MarioWall.jpeg"));
 
         // try {
         //     marioFace = ImageIO.read(new File("../images/LeftMario.png"));
@@ -76,10 +78,8 @@ public class MarioGame {
         else if (mario.getDir() == false) {
             mario.drawLeft(g);
         }
-       
-     }
-
-    // }  
+        wall.draw(g);
+       // wall.setX(-10);
     
     // public void ltHit(ActionEvent e) {
 	// 	System.out.println("Left!!");
@@ -95,4 +95,5 @@ public class MarioGame {
 	// 	System.out.println("Up!!");
     //     Mario.move(up);
 	// }
+}
 }

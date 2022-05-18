@@ -10,7 +10,11 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+<<<<<<< HEAD
+public class Mario {
+=======
 public class Mario extends HitBox{
+>>>>>>> c6dc6c14b9eeb4b01fa3bef46c27ec9103033f34
     private int x; //x coord
     private int y; // y coord
     private int direction;
@@ -33,8 +37,13 @@ public class Mario extends HitBox{
 
     public void drawRight(Graphics g) {
         try {
+<<<<<<< HEAD
+           mario = ImageIO.read(new File("images/RightMario.png"));
+            g.drawImage(mario, x, y, null);
+=======
             mario = ImageIO.read(new File("RightMario.png"));
             g.drawImage(mario, 200, 200, null);
+>>>>>>> 212c6ec9a0e92448849337258ad5afba070282b7
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -47,6 +56,8 @@ public class Mario extends HitBox{
         try {
             mario = ImageIO.read(new File("images/LeftMario.png"));
             g.drawImage(mario, x, y, null);
+
+            
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -61,11 +72,23 @@ public class Mario extends HitBox{
     public void setDir(boolean dir) {
         right = dir;
     }
-<<<<<<< HEAD
+
     public void moveRight() {
-        this.x += 2;
+        this.x += 8;
     }
     public  void moveLeft() {
+<<<<<<< HEAD
+       this.x = x -8;
+    }
+    // public  void move(boolean direction) {
+    //     if(direction = right){
+    //         this.x += 5;
+    //     }
+    //     while(direction == MarioGame.left){
+    //         this.x -= 5;
+    //     }
+    // }
+=======
        this.x = x - 2;
 ====}
     public  void move(boolean direction) {
@@ -77,8 +100,9 @@ public class Mario extends HitBox{
             this.x -= 5;
         }
         }
+>>>>>>> c6dc6c14b9eeb4b01fa3bef46c27ec9103033f34
     public void moveUp() {
-        
+
     }
         // if(direction = MarioGame.up){
         //     y += 10;
