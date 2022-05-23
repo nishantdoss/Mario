@@ -21,10 +21,10 @@ import javax.swing.JPanel;
 
 public class GameFrame extends JFrame {
 	private MarioGame game = new MarioGame();
-	
+	static boolean up;
 
-	// starting dimensions of window (pixels)
-	public static final int WIDTH = 600, HEIGHT = 380, REFRESH = 50;
+	// starting dimensions of window (pixels
+	public static final int WIDTH = 600, HEIGHT = 380, REFRESH = 1;
 	private Image marioFace;
 	
 	// where the game objects are displayed
@@ -33,6 +33,7 @@ public class GameFrame extends JFrame {
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			game.drawTheGame(g);
+			
 			// tried to get rid of some stuttering, changing REFRESH 
 			// improved this issue
 			panel.getToolkit().sync();
@@ -40,6 +41,9 @@ public class GameFrame extends JFrame {
 	};
 	private Timer timer;//timer that runs the game
 
+	public static boolean getUp() {
+		return up;
+	}
 
 	public GameFrame(String string) {
 		super(string);
@@ -100,14 +104,32 @@ public class GameFrame extends JFrame {
 		panel.getInputMap().put(KeyStroke.getKeyStroke("released LEFT"), "lt_key_r");
 		panel.getInputMap().put(KeyStroke.getKeyStroke("released DOWN"), "dn_key_r");
 
-		// panel.getActionMap().put("up_key", new AbstractAction() {
+		panel.getActionMap().put("up_key", new AbstractAction() {
 
-		// 	@Override
-		// 	public void actionPerformed(ActionEvent e) {
-		// 		System.out.println("hit up arrow");
-		// 		game.upHit(e);
-		// 	}
-		// });
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("hit up arrow");
+				//up = true;
+				game.upHit(e);
+				panel.getActionMap().put("rt_key",new AbstractAction() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("hit the right arrow");
+						game.rtHit(e);
+					}
+				});
+				panel.getActionMap().put("lt_key",new AbstractAction() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("hit the left arrow");
+						game.ltHit(e);
+					}
+				});
+				//up = false;
+			}
+		});
 		panel.getActionMap().put("rt_key",new AbstractAction() {
 
 			@Override

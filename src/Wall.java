@@ -17,16 +17,16 @@ import javax.imageio.ImageIO;
 
 
 public class Wall extends HitBox {
-    private int x;
-    private int y;
+    // private int x;
+    // private int y;
     private Image wall;
      //int seconds = 0;
     //private Timer timer = new Timer();
     //TimerTask task = seconds++;
     public Wall(int x, int y, File f) {
-        super(x,y,f);
-        this.x = x;
-        this.y = y;
+        super(x,y,f, 40);
+    //     this.x = x;
+    //     this.y = y;
     }
     public void draw(Graphics g) {
         //timer.scheduleAtFixedRate(task, 200, 1000); {
@@ -36,7 +36,7 @@ public class Wall extends HitBox {
                                 try {
                                     wall = ImageIO.read(new File("images/MarioWall.png"));
                                     Image image = wall.getScaledInstance(40, 40, Image.SCALE_DEFAULT);
-                                    g.drawImage(image, x, y, null);
+                                    g.drawImage(image, this.getX(), this.getY(), null);
                                 }
                                 catch(IOException e) {
                                     e.printStackTrace();
@@ -51,11 +51,12 @@ public class Wall extends HitBox {
         // g.drawImage(imagename, x coord, y coord, null )
             
     }
-    public void setX(int z) {
-        x +=z;
-    }
-    public void setY(int z) {
-        y += z;
-    }
+    // public void setX(int z) {
+    //     x +=z;
+    // }
+    // public void setY(int z) {
+    //     y += z;
+    // }
+
 
 }
