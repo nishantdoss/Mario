@@ -121,3 +121,8 @@ public class Mario extends HitBox {
     // y += 10;
     // }
 }
+        // if(direction = MarioGame.up){
+        //     y += 10;
+        // }
+
+
