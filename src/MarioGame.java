@@ -74,7 +74,7 @@ public class MarioGame {
 
     public void fall() {
         changeX = 0;
-        changeY = 6;
+        changeY = 5;
         if (mario.collidedVert(objects) ==2 || mario.getY() >= 298) {
             changeX = 0;
             changeY = 0;
@@ -100,11 +100,11 @@ public class MarioGame {
                 if (seconds < 11) {
                     seconds++;
                     jumping = true;
-                    mario.moveY(-6);
+                    mario.moveY(-5);
                     if (mario.getDir() == true) {
-                        mario.moveX(4);
+                        mario.moveX(2);
                     } else {
-                        mario.moveX(-4);
+                        mario.moveX(-2);
                     }
                     // System.out.println(seconds);
                 } else if (seconds <= 21) {
