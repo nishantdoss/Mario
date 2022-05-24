@@ -49,28 +49,47 @@ public class MarioGame {
     private static int changeX = 2;
     private static int changeY = 10;
     private Timer timer2;
-
+    int[][] walls = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+//1200 x 350
     public MarioGame() {
         score = 0;
         mario = new Mario(200, 298, true, new File("images/LeftMario.png")); // y = 285, 140
         back = new Background();
-        wall1 = new Wall(550, 290, new File("images/MarioWall.png"));
-        wall2 = new Wall(586, 290, new File("images/MarioWall.png"));
-        wall3 = new Wall(550, 218, new File("images/MarioWall.png"));
+        // wall1 = new Wall(550, 290, new File("images/MarioWall.png"));
+        // wall2 = new Wall(586, 290, new File("images/MarioWall.png"));
+        // wall3 = new Wall(550, 218, new File("images/MarioWall.png"));
 
-        wall4 = new Wall(658, 290, new File("images/MarioWall.png"));
-        wall5 = new Wall(586, 182, new File("images/MarioWall.png"));
-        //  wall6 = new Wall(690, 398, new File("images/MarioWall.png"));
-        // for (int i = 1; i < 3 i++) {
-        // objects.add("wall"+1);
-        // }
-        objects.add(wall1);
-        objects.add(wall2);
-        objects.add(wall3);
-        objects.add(wall4);
-        objects.add(wall5);
+        // wall4 = new Wall(658, 290, new File("images/MarioWall.png"));
+        // wall5 = new Wall(586, 182, new File("images/MarioWall.png"));
+        // wall5 = new Wall(586, 182, new File("images/MarioWall.png"));
+        // //  wall6 = new Wall(690, 398, new File("images/MarioWall.png"));
+        // // for (int i = 1; i < 3 i++) {
+        // // objects.add("wall"+1);
+        // // }
+        // objects.add(wall1);
+        // objects.add(wall2);
+        // objects.add(wall3);
+        // objects.add(wall4);
+        // objects.add(wall5);
         // objects.add(wall6);
-    }
+        for (int r = 0; r< walls.length; r++){
+            for (int c = 0; c< walls[0].length; c++) {
+                if (walls[r][c] == 1) {
+                    int x = c*36;
+                    int y = r*36+3;
+                    objects.add(new Wall(x, y, new File("images/MarioWall.png")));
+                }
+            }
+        }
+            }
 
     public void fall() {
         changeX = 0;
@@ -121,7 +140,7 @@ public class MarioGame {
     }
 
     public void ltHit(ActionEvent e) {
-        x = 15;
+        x = 20;
         if (mario.collidedObj(objects) != null) {
             if (mario.collidedHori(objects) == 1 && mario.getX() > mario.collidedObj(objects).getX()) {
                 x = 0;
@@ -133,7 +152,7 @@ public class MarioGame {
     }
 
     public void rtHit(ActionEvent e) {
-        x = 15;
+        x = 20;
         if (mario.collidedObj(objects) != null) {
             if (mario.collidedHori(objects) == 1 && mario.getX() > mario.collidedObj(objects).getX()) {
                 x = 0;
