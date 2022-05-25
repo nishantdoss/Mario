@@ -65,7 +65,7 @@ public class HitBox {
     public int collidedHori(ArrayList<HitBox> objects) {
         for (int i = 0; i < objects.size(); i++) {
             if (this.checkCollision(objects.get(i)) == 1) {
-                return 1;
+                return 1;  
             }
         }
         return 0;
@@ -128,11 +128,16 @@ public class HitBox {
                 return 1; }}
                 return 0;
     }
-    public void fall(int seconds) {
-        if (seconds < 21) {
-            
+    public boolean checkCollisionU(ArrayList<HitBox> objects) {
+        for (int i = 0; i < objects.size(); i++) {
+            if (this.getRec().intersects(objects.get(i).getRec())) { 
+                if (this.getY() > objects.get(i).getY()+ 6 && this.checkCollisionH(objects.get(i)) == 0) {
+                    return true;
+                }
+            }
+            }
+            return false;
         }
-    }
     public void moveX(int y) {
         hitBox.translate(y, 0);
         // this.x += y;
