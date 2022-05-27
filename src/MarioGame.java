@@ -9,9 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class MarioGame {
     private JFrame frame = new JFrame("Mario");
@@ -47,7 +44,7 @@ public class MarioGame {
     private ArrayList<HitBox> goombas = new ArrayList<>();
     private int lives;
     private static final Font Font_Large = new Font("Times New Roman", Font.BOLD, 20);
-
+    private Image end;
     
     private Timer timer2;
     int[][] walls = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -162,8 +159,17 @@ public class MarioGame {
         g.setFont(Font_Large);
         g.drawString("Lives: " +  lives, 0,20);
         seconds2++;
-    
+        if (lives == 0) {
+            try {
+                end = ImageIO.read(new File ("images/GameOver.jpeg"));
+                g.drawImage(end, 0, 0, null);
+            }
+            catch(IOException e) {
+                e.printStackTrace();
+            }
+            System.exit(0);
         }
+        
         mario.moveX(movingX);
         movingX = 0;
         if (!(mario.collidedObj(objects) == null)) {
