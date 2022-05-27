@@ -3,7 +3,7 @@ import java.awt.Graphics;
 import java.awt.event.*;
 import java.awt.event.MouseEvent;
 import java.io.File;
-
+import java.awt.Graphics;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,6 +45,8 @@ public class MarioGame {
     private Goomba goomba;
     private int goombaMove;
     private ArrayList<HitBox> goombas = new ArrayList<>();
+    private int lives;
+    private static final Font Font_Large = new Font("Times New Roman", Font.BOLD, 20);
 
     
     private Timer timer2;
@@ -61,6 +63,7 @@ public class MarioGame {
     public MarioGame() {
         score = 0;
         seconds2 =0;
+        lives = 3;
         mario = new Mario(200, 298, true, new File("images/LeftMario.png")); // y = 285, 140
         back = new Background();
         goomba = new Goomba(300, 305, true, new File("images/Gooomba.png"));
@@ -98,7 +101,7 @@ public class MarioGame {
     }
 
     public void upHit(ActionEvent e) {
-        seconds = 0;
+        seconds = 3;
         // jumping = true;
         flip = false;
         int marioHeight = mario.getY();
@@ -145,8 +148,22 @@ public class MarioGame {
     }
 
     public void drawTheGame(Graphics g) {
+        for (int i =0; i< goombas.size(); i++) {
+            if (mario.checkCollision(goombas.get(i)) != 0) {
+                lives--;
+                mario.setX(400);
+                mario.setY(50);
+            }
+        }
+        if (mario.getX() <= 0) {
+            lives--;
+        }
         back.draw(g);
+        g.setFont(Font_Large);
+        g.drawString("Lives: " +  lives, 0,20);
         seconds2++;
+    
+        }
         mario.moveX(movingX);
         movingX = 0;
         if (!(mario.collidedObj(objects) == null)) {
@@ -189,7 +206,7 @@ public class MarioGame {
                 goombas.get(i).moveX(goombaMove);
             }
             else if (seconds2 < 24) {
-                goombaMove = 6;
+                goombaMove = 7;
                 System.out.println("moving left");
                 if (goombas.get(i).collidedObj(objects) != null) {
                     HitBox wall = goombas.get(i).collidedObj(objects);
