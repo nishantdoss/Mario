@@ -19,7 +19,7 @@ public class Goomba extends HitBox {
     private int counter1 = 0;
     private Image image;
     final static int d1 = 21;
-    final static int d2 = 28;
+    final static int d2 = 21;
     // also add dimensions of mario as a final variable
     public Goomba(int x, int y, boolean right, File f) {
         super(x, y, f, d1, d2);

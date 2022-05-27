@@ -42,6 +42,9 @@ public class MarioGame {
     public ArrayList<HitBox> objects = new ArrayList<>();
     private static int changeX = 2;
     private static int changeY = 10;
+    private Goomba goomba;
+    private int goombaMove;
+    private ArrayList<HitBox> goombas = new ArrayList<>();
 
     
     private Timer timer2;
@@ -53,18 +56,25 @@ public class MarioGame {
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 //1200 x 350
     public MarioGame() {
         score = 0;
+        seconds2 =0;
         mario = new Mario(200, 298, true, new File("images/LeftMario.png")); // y = 285, 140
         back = new Background();
+        goomba = new Goomba(300, 305, true, new File("images/Gooomba.png"));
         for (int r = 0; r< walls.length; r++){
             for (int c = 0; c< walls[0].length; c++) {
                 if (walls[r][c] == 1) {
                     int x = c*36;
                     int y = r*36+3;
                     objects.add(new Wall(x, y, new File("images/MarioWall.png")));
+                }
+                else if (walls[r][c] == 2) {
+                    int x = c * 36;
+                    int y = r*36 +15;
+                    goombas.add(new Goomba(x,y, true, new File("images/Gooomba.png")));
                 }
             }
         }
@@ -135,6 +145,8 @@ public class MarioGame {
     }
 
     public void drawTheGame(Graphics g) {
+        back.draw(g);
+        seconds2++;
         mario.moveX(movingX);
         movingX = 0;
         if (!(mario.collidedObj(objects) == null)) {
@@ -164,7 +176,35 @@ public class MarioGame {
             jumping = false;
             timer.stop();
         }
-        back.draw(g);
+        for (int i =0; i< goombas.size(); i ++) {
+            goombas.get(i).draw(g);
+            if (seconds2 < 8) {
+                goombaMove = 6;
+                System.out.println("moving right");
+    
+                if (goombas.get(i).collidedObj(objects) !=  null) {
+                    HitBox wall = goombas.get(i).collidedObj(objects);
+                    goombas.get(i).setX(wall.getX() - goombas.get(i).getWidth()-4);
+                }
+                goombas.get(i).moveX(goombaMove);
+            }
+            else if (seconds2 < 24) {
+                goombaMove = 6;
+                System.out.println("moving left");
+                if (goombas.get(i).collidedObj(objects) != null) {
+                    HitBox wall = goombas.get(i).collidedObj(objects);
+                    goombas.get(i).setX(wall.getX() + wall.getWidth() +4);
+                }
+                goombas.get(i).moveX(-goombaMove);
+            }
+        }
+        
+    
+        
+        if (seconds2 > 20) {
+            seconds2 =0;
+        }
+
         if (mario.getDir() == true && jumping == true) {
             mario.drawUpR(g);
         } else if (mario.getDir() == true) {
@@ -178,5 +218,6 @@ public class MarioGame {
             objects.get(i).draw(g);
             objects.get(i).moveX(-3);
         }
+        
     }
 }

@@ -102,7 +102,7 @@ public class HitBox {
 
     public int checkCollision(HitBox h) {
         // return 0 if no collision, 1 if x, 2 if y
-        if (this.hitBox.intersects(h.getRec())) {
+        if (this.getRec().intersects(h.getRec())) {
             if (this.getY() <= h.getY()) {
                 // System.out.println("vertical");
                 return 2; }
