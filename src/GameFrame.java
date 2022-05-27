@@ -32,8 +32,19 @@ public class GameFrame extends JFrame {
 		@Override
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
+			if (MarioGame.getLives() != 0 ) {
 			game.drawTheGame(g);
-			
+			}
+			else {
+				try {
+					Image end = ImageIO.read(new File ("images/GameOver.jpeg"));
+					end = end.getScaledInstance(600, 350, Image.SCALE_DEFAULT); 
+					g.drawImage(end, 0, 0, null);
+				}
+				catch(IOException e) {
+					e.printStackTrace();
+				}
+			}
 			// tried to get rid of some stuttering, changing REFRESH 
 			// improved this issue
 			panel.getToolkit().sync();

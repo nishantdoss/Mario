@@ -42,9 +42,9 @@ public class MarioGame {
     private Goomba goomba;
     private int goombaMove;
     private ArrayList<HitBox> goombas = new ArrayList<>();
-    private int lives;
+    private static int lives;
     private static final Font Font_Large = new Font("Times New Roman", Font.BOLD, 20);
-    private Image end;
+   // private Image end;
     
     private Timer timer2;
     int[][] walls = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -143,7 +143,9 @@ public class MarioGame {
 
         mario.setDir(true);
     }
-
+    public static int getLives() {
+        return lives;
+    }
     public void drawTheGame(Graphics g) {
         for (int i =0; i< goombas.size(); i++) {
             if (mario.checkCollision(goombas.get(i)) != 0) {
@@ -154,21 +156,25 @@ public class MarioGame {
         }
         if (mario.getX() <= 0) {
             lives--;
+            mario.setX(400);
+                mario.setY(50);
         }
         back.draw(g);
         g.setFont(Font_Large);
         g.drawString("Lives: " +  lives, 0,20);
         seconds2++;
-        if (lives == 0) {
-            try {
-                end = ImageIO.read(new File ("images/GameOver.jpeg"));
-                g.drawImage(end, 0, 0, null);
-            }
-            catch(IOException e) {
-                e.printStackTrace();
-            }
-            System.exit(0);
-        }
+        // if (lives == 0) {
+            
+        //     try {
+        //         Image end = ImageIO.read(new File ("images/GameOver.jpeg"));
+        //         end = end.getScaledInstance(600, 350, Image.SCALE_DEFAULT); 
+        //         g.drawImage(end, 0, 0, null);
+        //     }
+        //     catch(IOException e) {
+        //         e.printStackTrace();
+        //     }
+        //     // System.exit(0);
+        // }
         
         mario.moveX(movingX);
         movingX = 0;
@@ -203,7 +209,6 @@ public class MarioGame {
             goombas.get(i).draw(g);
             if (seconds2 < 8) {
                 goombaMove = 6;
-                System.out.println("moving right");
     
                 if (goombas.get(i).collidedObj(objects) !=  null) {
                     HitBox wall = goombas.get(i).collidedObj(objects);
@@ -213,7 +218,6 @@ public class MarioGame {
             }
             else if (seconds2 < 24) {
                 goombaMove = 7;
-                System.out.println("moving left");
                 if (goombas.get(i).collidedObj(objects) != null) {
                     HitBox wall = goombas.get(i).collidedObj(objects);
                     goombas.get(i).setX(wall.getX() + wall.getWidth() +4);
