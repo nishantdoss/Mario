@@ -83,7 +83,7 @@ public class MarioGame {
     public void fall() {
         changeX = 0;
         changeY = 10;
-        if (mario.collidedVert(objects) ==2 || mario.getY() >= 298) {
+        if (mario.collidedVert(objects) ==2 || mario.getY() >= 297) {
             changeX = 0;
             changeY = 0;
         }
@@ -105,7 +105,7 @@ public class MarioGame {
         timer = new Timer(1, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                if (seconds <= 4 && mario.checkCollisionU(objects) == false) {
+                if (seconds <= 8 && mario.checkCollisionU(objects) == false) {
                     seconds++;
                     jumping = true;
                     mario.moveY(-10);
@@ -114,7 +114,8 @@ public class MarioGame {
                     } else {
                         mario.moveX(-2);
                     }
-                } 
+                }
+                
 
             }
         });
@@ -150,13 +151,13 @@ public class MarioGame {
         for (int i =0; i< goombas.size(); i++) {
             if (mario.checkCollision(goombas.get(i)) != 0) {
                 lives--;
-                mario.setX(400);
+                mario.setX(300);
                 mario.setY(50);
             }
         }
         if (mario.getX() <= 0) {
             lives--;
-            mario.setX(400);
+            mario.setX(300);
                 mario.setY(50);
         }
         back.draw(g);
@@ -201,7 +202,7 @@ public class MarioGame {
                 }
             }
         }
-        if (seconds > 4) {
+        if (seconds > 8) {
             jumping = false;
             timer.stop();
         }
