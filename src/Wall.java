@@ -27,7 +27,7 @@ public class Wall extends HitBox {
     public Wall(int x, int y, File f) {
         super(x, y, f, d1, d1);
         try {
-            wall = ImageIO.read(new File("images/MarioWall.png"));
+            wall = ImageIO.read(f);
             image = wall.getScaledInstance(d1, d1, Image.SCALE_DEFAULT);
             //g.drawImage(image, this.getX(), this.getY(), null);
         } catch (IOException e) {
