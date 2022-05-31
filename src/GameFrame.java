@@ -24,7 +24,7 @@ public class GameFrame extends JFrame {
 	static boolean up;
 
 	// starting dimensions of window (pixels
-	public static final int WIDTH = 600, HEIGHT = 350, REFRESH = 1;
+	public static final int WIDTH = 600, HEIGHT = 350, REFRESH = 50;
 	private Image marioFace;
 	
 	// where the game objects are displayed
@@ -32,8 +32,31 @@ public class GameFrame extends JFrame {
 		@Override
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
+			if (MarioGame.getWin()) {
+				try {
+					Image end = ImageIO.read(new File ("images/WinSreen.jpg"));
+					end = end.getScaledInstance(600, 350, Image.SCALE_DEFAULT); 
+					g.drawImage(end, 0, 0, null);
+				}
+				catch(IOException e) {
+					e.printStackTrace();
+				}
+			}
+			else {
+			if (MarioGame.getLives() != 0 ) {
 			game.drawTheGame(g);
-			
+			}
+			else {
+				try {
+					Image end = ImageIO.read(new File ("images/GameOver.jpeg"));
+					end = end.getScaledInstance(600, 350, Image.SCALE_DEFAULT); 
+					g.drawImage(end, 0, 0, null);
+				}
+				catch(IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 			// tried to get rid of some stuttering, changing REFRESH 
 			// improved this issue
 			panel.getToolkit().sync();
@@ -108,14 +131,14 @@ public class GameFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hit up arrow");
+
 				//up = true;
 				game.upHit(e);
 				panel.getActionMap().put("rt_key",new AbstractAction() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("hit the right arrow");
+						// System.out.println("hit the right arrow");
 						game.rtHit(e);
 					}
 				});
@@ -123,7 +146,7 @@ public class GameFrame extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("hit the left arrow");
+						// System.out.println("hit the left arrow");
 						game.ltHit(e);
 					}
 				});
@@ -134,7 +157,7 @@ public class GameFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hit the right arrow");
+				// System.out.println("hit the right arrow");
 				game.rtHit(e);
 			}
 		});
@@ -142,7 +165,7 @@ public class GameFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hit the left arrow");
+				// System.out.println("hit the left arrow");
 				game.ltHit(e);
 			}
 		});
