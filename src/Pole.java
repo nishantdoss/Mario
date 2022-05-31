@@ -16,17 +16,19 @@ public class Pole extends HitBox {
     private Image pole;
     public Pole(int x, int y, File f) {
         super(x,y,f,d1, d2);
-
+        try {
+            pole = ImageIO.read(new File("images/Pole.png"));
+            pole = pole.getScaledInstance(d1, d2, Image.SCALE_DEFAULT);
+           // g.drawImage(pole, this.getX() + pole.getWidth(null), this.getY(), -pole.getWidth(null),
+            //pole.getHeight(null), null);
+            //g.drawImage(mario, this.getX(), this.getY(), null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void draw(Graphics g) {
-    try {
-        pole = ImageIO.read(new File("images/Pole.png"));
-        pole = pole.getScaledInstance(d1, d2, Image.SCALE_DEFAULT);
         g.drawImage(pole, this.getX() + pole.getWidth(null), this.getY(), -pole.getWidth(null),
         pole.getHeight(null), null);
-        //g.drawImage(mario, this.getX(), this.getY(), null);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
 }
+
 }

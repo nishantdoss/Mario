@@ -15,7 +15,9 @@ public class Mario extends HitBox {
     // private int y; // y coord
     private int direction;
     private boolean right;
-    private Image mario;
+    private Image marioL;
+    private Image marioR;
+    private Image marioU;
     private int MARIOWIDTH;
     private int MARIOHEIGHT;
     private int counter1 = 0;
@@ -26,18 +28,24 @@ public class Mario extends HitBox {
     public Mario(int x, int y, boolean right, File f) {
         super(x, y, f, d1, d2);
         this.right = right;
-            
+        try {
 
-    //     else {
-    //         try { mario = ImageIO.read(new File("images/RightMario.png"));
-    //         mario = mario.getScaledInstance(-60, 60, Image.SCALE_DEFAULT);
-    //     }
-    //     catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-    // }
-        // this.x = x;
-        // this. y = y;
+            marioR = ImageIO.read(new File("images/LeftMario.png"));
+            marioR = marioR.getScaledInstance(d1, d2, Image.SCALE_DEFAULT);
+           // g.drawImage(mario, this.getX() + mario.getWidth(null), this.getY(), -mario.getWidth(null),
+           // mario.getHeight(null), null);
+            //g.drawImage(mario, this.getX(), this.getY(), null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            marioU = ImageIO.read(new File("images/MarioJump.png"));
+            marioU = marioU.getScaledInstance(28, 37, Image.SCALE_DEFAULT);
+           // g.drawImage(marioU, this.getX(), this.getY(), null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         }
         public static int getDimension() {
             return d1;
@@ -48,52 +56,22 @@ public class Mario extends HitBox {
     }
 
     public void drawRight(Graphics g) {
-        try {
-
-            mario = ImageIO.read(new File("images/LeftMario.png"));
-            mario = mario.getScaledInstance(d1, d2, Image.SCALE_DEFAULT);
-            g.drawImage(mario, this.getX() + mario.getWidth(null), this.getY(), -mario.getWidth(null),
-            mario.getHeight(null), null);
-            //g.drawImage(mario, this.getX(), this.getY(), null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        g.drawImage(marioR, this.getX() + marioR.getWidth(null), this.getY(), -marioR.getWidth(null),
+        marioR.getHeight(null), null);
         //
         // g.drawImage(imagename, x coord, y coord, null )
 
     }
     public void drawUpR(Graphics g) {
-        try {
-            mario = ImageIO.read(new File("images/MarioJump.png"));
-            mario = mario.getScaledInstance(28, 37, Image.SCALE_DEFAULT);
-            g.drawImage(mario, this.getX(), this.getY(), null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        g.drawImage(marioU, this.getX(), this.getY(), null);
     }
     public void drawUpL(Graphics g) {
-        try {
-            mario = ImageIO.read(new File("images/MarioJump.png"));
-            mario = mario.getScaledInstance(28, 37, Image.SCALE_DEFAULT);
-            g.drawImage(mario, this.getX() + mario.getWidth(null), this.getY(), -mario.getWidth(null),
-            mario.getHeight(null), null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        g.drawImage(marioU, this.getX() + marioU.getWidth(null), this.getY(), -marioU.getWidth(null),
+            marioU.getHeight(null), null);
     }
 
     public void drawLeft(Graphics g) {
-        try {
-            mario = ImageIO.read(new File("images/LeftMario.png"));
-            mario = mario.getScaledInstance(d1, d2, Image.SCALE_DEFAULT);
-            g.drawImage(mario, this.getX(), this.getY(), null);
-
-            //g.drawImage(mario, this.getX(), this.getY(), null);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        g.drawImage(marioR, this.getX(), this.getY(), null);
     }
 
     public boolean getDir() {

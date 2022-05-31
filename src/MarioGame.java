@@ -52,15 +52,15 @@ public class MarioGame {
    // private Image end;
     
     private Timer timer2;
-    int[][] walls = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 1, 1, 0, 0, 0, 0, 2, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+    int[][] walls = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 1, 0, 0, 2, 0, 2, 0, 0, 1, 0, 0, 2, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1, 1, 0}};
 //1200 x 350
     public MarioGame() {
         score = 0;
@@ -70,7 +70,7 @@ public class MarioGame {
         heart1 = new Heart(10, 20);
         heart2 = new Heart(45, 20);
         heart3 = new Heart(80, 20);
-        pole = new Pole(850, 125, new File("images/Pole.png"));
+        pole = new Pole(1530, 125, new File("images/Pole.png"));
         mario = new Mario(200, 298, true, new File("images/LeftMario.png")); // y = 285, 140
         back = new Background();
         goomba = new Goomba(300, 305, true, new File("images/Gooomba.png"));
@@ -93,7 +93,7 @@ public class MarioGame {
     public void fall() {
         changeX = 0;
         changeY = 10;
-        if (mario.collidedVert(objects) ==2 || mario.getY() >= 297) {
+        if (mario.collidedVert(objects) ==2 || mario.getY() == 298) {
             changeX = 0;
             changeY = 0;
         }
@@ -112,7 +112,7 @@ public class MarioGame {
         // jumping = true;
         flip = false;
         int marioHeight = mario.getY();
-        timer = new Timer(1, new ActionListener() {
+        timer = new Timer(50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 if (seconds <= 5 && mario.checkCollisionU(objects) == false) {
@@ -122,7 +122,7 @@ public class MarioGame {
                     if (mario.getDir() == true) {
                         mario.moveX(2);
                     } else {
-                        mario.moveX(-2);
+                        mario.moveX(-1);
                     }
                 }
                 
@@ -134,7 +134,7 @@ public class MarioGame {
     }
 
     public void ltHit(ActionEvent e) {
-        movingX = -12;
+        movingX = -7;
         if (mario.collidedObj(objects) != null) {
             if (mario.collidedHori(objects) == 1 && mario.getX() > mario.collidedObj(objects).getX()) {
                 movingX = 0;
@@ -145,7 +145,7 @@ public class MarioGame {
     }
 
     public void rtHit(ActionEvent e) {
-        movingX = 12;
+        movingX = 7;
         if (mario.collidedObj(objects) != null) {
             if (mario.collidedHori(objects) == 1 && mario.getX() < mario.collidedObj(objects).getX()) {
                 movingX = 0;
@@ -161,7 +161,7 @@ public class MarioGame {
         return win;
     }
     public void drawTheGame(Graphics g){
-        if (mario.checkCollision(pole) != 0) {
+        if (mario.checkCollision(pole) != 0 && pole.getX() - mario.getX() +mario.getWidth()  < 7) {
             System.out.println("win");
             win = true;
         }
@@ -245,7 +245,8 @@ public class MarioGame {
     
                 if (goombas.get(i).collidedObj(objects) !=  null) {
                     HitBox wall = goombas.get(i).collidedObj(objects);
-                    goombas.get(i).setX(wall.getX() - goombas.get(i).getWidth()-4);
+                    if (goombas.get(i).getX() < wall.getX()) {
+                    goombas.get(i).setX(wall.getX() - goombas.get(i).getWidth()-4); }
                 }
                 goombas.get(i).moveX(goombaMove);
             }
@@ -253,7 +254,8 @@ public class MarioGame {
                 goombaMove = 9;
                 if (goombas.get(i).collidedObj(objects) != null) {
                     HitBox wall = goombas.get(i).collidedObj(objects);
-                    goombas.get(i).setX(wall.getX() + wall.getWidth() +4);
+                    if (goombas.get(i).getX() > wall.getX()) {
+                    goombas.get(i).setX(wall.getX() + wall.getWidth() +4); }
                 }
                 goombas.get(i).moveX(-goombaMove);
             }

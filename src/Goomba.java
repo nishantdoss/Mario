@@ -24,6 +24,14 @@ public class Goomba extends HitBox {
     public Goomba(int x, int y, boolean right, File f) {
         super(x, y, f, d1, d2);
         this.right = right;
+        try {
+            goomba = ImageIO.read(new File("images/Gooomba.png"));
+            goomba = goomba.getScaledInstance(d1, d2, Image.SCALE_DEFAULT);
+           
+            //g.drawImage(mario, this.getX(), this.getY(), null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public static int getDimension() {
         return d1;
@@ -34,15 +42,8 @@ public Image getImage() {
 }
 
 public void draw(Graphics g) {
-    try {
-        goomba = ImageIO.read(new File("images/Gooomba.png"));
-        goomba = goomba.getScaledInstance(d1, d2, Image.SCALE_DEFAULT);
-        g.drawImage(goomba, this.getX() + goomba.getWidth(null), this.getY(), -goomba.getWidth(null),
-        goomba.getHeight(null), null);
-        //g.drawImage(mario, this.getX(), this.getY(), null);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+    g.drawImage(goomba, this.getX() + goomba.getWidth(null), this.getY(), -goomba.getWidth(null),
+    goomba.getHeight(null), null);
 }
 
 public boolean getDir() {

@@ -18,6 +18,15 @@ public class Heart {
     public Heart(int x, int y) {
         this.x = x;
         this.y = y;
+        try {
+
+            heart = ImageIO.read(new File("images/Heart.png"));
+            heart = heart.getScaledInstance(d1, d2, Image.SCALE_DEFAULT);
+            //g.drawImage(heart, this.getX(), this.getY(), null);
+            //g.drawImage(mario, this.getX(), this.getY(), null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public int getX() {
         return x;
@@ -26,14 +35,7 @@ public class Heart {
         return y;
     }
     public void draw(Graphics g) {
-        try {
-
-            heart = ImageIO.read(new File("images/Heart.png"));
-            heart = heart.getScaledInstance(d1, d2, Image.SCALE_DEFAULT);
-            g.drawImage(heart, this.getX(), this.getY(), null);
-            //g.drawImage(mario, this.getX(), this.getY(), null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       
+        g.drawImage(heart, this.getX(), this.getY(), null);
     }
 }
