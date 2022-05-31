@@ -26,7 +26,8 @@ public class GameFrame extends JFrame {
 	// starting dimensions of window (pixels
 	public static final int WIDTH = 600, HEIGHT = 350, REFRESH = 50;
 	private Image marioFace;
-	
+	private static final Font Font_Large = new Font("Times New Roman", Font.BOLD, 20);
+
 	// where the game objects are displayed
 	private JPanel panel = new JPanel() {
 		@Override
@@ -41,6 +42,8 @@ public class GameFrame extends JFrame {
 				catch(IOException e) {
 					e.printStackTrace();
 				}
+				g.setFont(Font_Large);
+        	g.drawString("Score: " +  MarioGame.getScore(), 260,100);
 			}
 			else {
 			if (MarioGame.getLives() != 0 ) {

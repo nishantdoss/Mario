@@ -128,6 +128,12 @@ public class HitBox {
                 return 1; }}
                 return 0;
     }
+    public boolean goombaUp(HitBox h) {
+        if (this.hitBox.intersects(h.getRec()) && this.getY() + this.getHeight() -6 < h.getY()) {
+            return true;
+        }
+        return false;
+    }
     public boolean checkCollisionU(ArrayList<HitBox> objects) {
         for (int i = 0; i < objects.size(); i++) {
             if (this.getRec().intersects(objects.get(i).getRec())) { 

@@ -25,7 +25,7 @@ public class MarioGame {
     // gf.setVisible(true);
     private Mario mario;
     private Image image;
-    private int score;
+    private static int score;
     private Image marioFace;
     private static int movingX;
     //private int x = 15;
@@ -58,9 +58,9 @@ public class MarioGame {
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 1, 0, 0, 1, 0, 0, 0, 0, 0},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 2, 0, 2, 0, 0, 1, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1, 1, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 2, 0, 2, 0, 0, 1, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 1, 1, 0},
                      {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}};
 //1200 x 350
     public MarioGame() {
@@ -112,7 +112,9 @@ public class MarioGame {
         mario.moveY(changeY);
 
     }
-
+    public static int getScore() {
+        return score;
+    }
     public void upHit(ActionEvent e) {
         seconds = 0;
         // jumping = true;
@@ -128,7 +130,7 @@ public class MarioGame {
                     if (mario.getDir() == true) {
                         mario.moveX(2);
                     } else {
-                        mario.moveX(-1);
+                        mario.moveX(-2);
                     }
                 }
                 
@@ -173,10 +175,16 @@ public class MarioGame {
         }
         
         for (int i =0; i< goombas.size(); i++) {
-            if (mario.checkCollision(goombas.get(i)) != 0) {
+             if (mario.checkCollision(goombas.get(i)) != 0) {
+                if (mario.goombaUp(goombas.get(i))) {
+                    goombas.remove(i);
+                    score +=10;
+                }
+                else {
                 lives--;
                 mario.setX(300);
                 mario.setY(50);
+                }
             }
         }
         if (mario.getX() <= 0) {
@@ -188,8 +196,7 @@ public class MarioGame {
         pole.draw(g);
         pole.moveX(-3);
        
-        // g.setFont(Font_Large);
-        // g.drawString("Lives: " +  lives, 0,20);
+       
         seconds2++;
         // if (lives == 0) {
             
@@ -287,6 +294,8 @@ public class MarioGame {
         else if (lives == 1) {
             heart1.draw(g);
         }
+        g.setFont(Font_Large);
+        g.drawString("Score: " +  score, 280,20);
         
     }
 }
