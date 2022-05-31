@@ -40,9 +40,14 @@ public class MarioGame {
     private static int changeX = 2;
     private static int changeY = 10;
     private Goomba goomba;
+    private Pole pole;
     private int goombaMove;
     private ArrayList<HitBox> goombas = new ArrayList<>();
     private static int lives;
+    private static boolean win;
+    private Heart heart1;
+    private Heart heart2;
+    private Heart heart3;
     private static final Font Font_Large = new Font("Times New Roman", Font.BOLD, 20);
    // private Image end;
     
@@ -55,12 +60,17 @@ public class MarioGame {
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+                     {0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 1, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 //1200 x 350
     public MarioGame() {
         score = 0;
+        win = false;
         seconds2 =0;
         lives = 3;
+        heart1 = new Heart(10, 20);
+        heart2 = new Heart(45, 20);
+        heart3 = new Heart(80, 20);
+        pole = new Pole(850, 125, new File("images/Pole.png"));
         mario = new Mario(200, 298, true, new File("images/LeftMario.png")); // y = 285, 140
         back = new Background();
         goomba = new Goomba(300, 305, true, new File("images/Gooomba.png"));
@@ -98,14 +108,14 @@ public class MarioGame {
     }
 
     public void upHit(ActionEvent e) {
-        seconds = 3;
+        seconds = 0;
         // jumping = true;
         flip = false;
         int marioHeight = mario.getY();
         timer = new Timer(1, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                if (seconds <= 8 && mario.checkCollisionU(objects) == false) {
+                if (seconds <= 5 && mario.checkCollisionU(objects) == false) {
                     seconds++;
                     jumping = true;
                     mario.moveY(-10);
@@ -147,7 +157,15 @@ public class MarioGame {
     public static int getLives() {
         return lives;
     }
-    public void drawTheGame(Graphics g) {
+    public static boolean getWin() {
+        return win;
+    }
+    public void drawTheGame(Graphics g){
+        if (mario.checkCollision(pole) != 0) {
+            System.out.println("win");
+            win = true;
+        }
+        
         for (int i =0; i< goombas.size(); i++) {
             if (mario.checkCollision(goombas.get(i)) != 0) {
                 lives--;
@@ -161,8 +179,22 @@ public class MarioGame {
                 mario.setY(50);
         }
         back.draw(g);
-        g.setFont(Font_Large);
-        g.drawString("Lives: " +  lives, 0,20);
+        pole.draw(g);
+        pole.moveX(-3);
+        if (lives == 3) {
+            heart1.draw(g);
+            heart2.draw(g);
+            heart3.draw(g);
+        }
+        else if (lives ==2){
+            heart1.draw(g);
+            heart2.draw(g);
+        }
+        else if (lives == 1) {
+            heart1.draw(g);
+        }
+        // g.setFont(Font_Large);
+        // g.drawString("Lives: " +  lives, 0,20);
         seconds2++;
         // if (lives == 0) {
             
@@ -202,7 +234,7 @@ public class MarioGame {
                 }
             }
         }
-        if (seconds > 8) {
+        if (seconds > 5) {
             jumping = false;
             timer.stop();
         }
@@ -218,7 +250,7 @@ public class MarioGame {
                 goombas.get(i).moveX(goombaMove);
             }
             else if (seconds2 < 24) {
-                goombaMove = 7;
+                goombaMove = 9;
                 if (goombas.get(i).collidedObj(objects) != null) {
                     HitBox wall = goombas.get(i).collidedObj(objects);
                     goombas.get(i).setX(wall.getX() + wall.getWidth() +4);
@@ -249,3 +281,4 @@ public class MarioGame {
         
     }
 }
+
