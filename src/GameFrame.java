@@ -131,14 +131,14 @@ public class GameFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hit up arrow");
+
 				//up = true;
 				game.upHit(e);
 				panel.getActionMap().put("rt_key",new AbstractAction() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("hit the right arrow");
+						// System.out.println("hit the right arrow");
 						game.rtHit(e);
 					}
 				});
@@ -146,7 +146,7 @@ public class GameFrame extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("hit the left arrow");
+						// System.out.println("hit the left arrow");
 						game.ltHit(e);
 					}
 				});
@@ -157,7 +157,7 @@ public class GameFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hit the right arrow");
+				// System.out.println("hit the right arrow");
 				game.rtHit(e);
 			}
 		});
@@ -165,7 +165,7 @@ public class GameFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("hit the left arrow");
+				// System.out.println("hit the left arrow");
 				game.ltHit(e);
 			}
 		});
