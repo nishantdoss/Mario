@@ -82,5 +82,3 @@ public class Mario extends HitBox {
         right = dir;
     }
 }
-
-
