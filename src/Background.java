@@ -10,8 +10,7 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 public class Background {
-    private Image back;
-    
+private Image back;
     public Background() {
 
     }

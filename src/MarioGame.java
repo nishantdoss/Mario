@@ -25,7 +25,7 @@ public class MarioGame {
     // gf.setVisible(true);
     private Mario mario;
     private Image image;
-    private int score;
+    private static int score;
     private Image marioFace;
     private static int movingX;
     //private int x = 15;
@@ -58,9 +58,10 @@ public class MarioGame {
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0},
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 1, 0, 0, 1, 0, 0, 0, 0, 0},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 2, 0, 2, 0, 0, 1, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1, 1, 0}};
+                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 2, 0, 2, 0, 0, 1, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 1, 1, 0},
+                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}};
 //1200 x 350
     public MarioGame() {
         score = 0;
@@ -75,16 +76,21 @@ public class MarioGame {
         back = new Background();
         goomba = new Goomba(300, 305, true, new File("images/Gooomba.png"));
         for (int r = 0; r< walls.length; r++){
-            for (int c = 0; c< walls[0].length; c++) {
+            for (int c = 0; c< walls[r].length; c++) {
                 if (walls[r][c] == 1) {
                     int x = c*36;
-                    int y = r*36+3;
+                    int y = r*36;
                     objects.add(new Wall(x, y, new File("images/MarioWall.png")));
                 }
                 else if (walls[r][c] == 2) {
                     int x = c * 36;
                     int y = r*36 +15;
                     goombas.add(new Goomba(x,y, true, new File("images/Gooomba.png")));
+                }
+                else if (walls[r][c] == 3) {
+                    int x = c *36;
+                    int y = r*36;
+                    objects.add(new Wall(x, y, new File("images/GrassBlock.png")));
                 }
             }
         }
@@ -106,7 +112,9 @@ public class MarioGame {
         mario.moveY(changeY);
 
     }
-
+    public static int getScore() {
+        return score;
+    }
     public void upHit(ActionEvent e) {
         seconds = 0;
         // jumping = true;
@@ -122,7 +130,7 @@ public class MarioGame {
                     if (mario.getDir() == true) {
                         mario.moveX(2);
                     } else {
-                        mario.moveX(-1);
+                        mario.moveX(-2);
                     }
                 }
                 
@@ -167,10 +175,16 @@ public class MarioGame {
         }
         
         for (int i =0; i< goombas.size(); i++) {
-            if (mario.checkCollision(goombas.get(i)) != 0) {
+             if (mario.checkCollision(goombas.get(i)) != 0) {
+                if (mario.goombaUp(goombas.get(i))) {
+                    goombas.remove(i);
+                    score +=10;
+                }
+                else {
                 lives--;
                 mario.setX(300);
                 mario.setY(50);
+                }
             }
         }
         if (mario.getX() <= 0) {
@@ -181,20 +195,8 @@ public class MarioGame {
         back.draw(g);
         pole.draw(g);
         pole.moveX(-3);
-        if (lives == 3) {
-            heart1.draw(g);
-            heart2.draw(g);
-            heart3.draw(g);
-        }
-        else if (lives ==2){
-            heart1.draw(g);
-            heart2.draw(g);
-        }
-        else if (lives == 1) {
-            heart1.draw(g);
-        }
-        // g.setFont(Font_Large);
-        // g.drawString("Lives: " +  lives, 0,20);
+       
+       
         seconds2++;
         // if (lives == 0) {
             
@@ -280,7 +282,20 @@ public class MarioGame {
             objects.get(i).draw(g);
             objects.get(i).moveX(-3);
         }
+        if (lives == 3) {
+            heart1.draw(g);
+            heart2.draw(g);
+            heart3.draw(g);
+        }
+        else if (lives ==2){
+            heart1.draw(g);
+            heart2.draw(g);
+        }
+        else if (lives == 1) {
+            heart1.draw(g);
+        }
+        g.setFont(Font_Large);
+        g.drawString("Score: " +  score, 280,20);
         
     }
 }
-
